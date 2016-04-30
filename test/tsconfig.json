@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es5",
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "outDir": "../dist",
+        "noImplicitAny": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true
+    },
+    "filesGlob": [
+        "**/*.ts",
+        "!**/*.d.ts",
+        "../src/**/*.ts",
+        "!../src/**/*.d.ts",
+        "../typings/browser.d.ts"
+    ],
+    "files": [
+        "Foo.spec.ts",
+        "index.spec.ts",
+        "../src/Foo.ts",
+        "../src/Main.ts",
+        "../typings/browser.d.ts"
+    ]
+}
