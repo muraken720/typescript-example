@@ -12,6 +12,7 @@
     "core-js": "^2.3.0",
     "espower-cli": "^1.0.0",
     "espower-typescript": "^5.0.1",
+    "json-loader": "^0.5.4",
     "karma": "^0.13.22",
     "karma-chrome-launcher": "^0.2.3",
     "karma-mocha": "^0.2.2",
@@ -20,7 +21,8 @@
     "phantomjs-prebuilt": "^2.1.7",
     "power-assert": "^1.3.1",
     "tsconfig-cli": "^2.0.0",
-    "typings": "^0.8.1"
+    "typings": "^0.8.1",
+    "webpack": "^1.13.0"
   },
   "directories": {
     "test": "test"
@@ -37,10 +39,10 @@
   },
   "scripts": {
     "build:lib": "tsc -p .",
-    "build:test": "tsc -p test && browserify --debug -o dist/test/bundle.spec.js dist/test/index.spec.js",
-    "clean": "rm -rf dist/*",
-    "espower": "espower dist/test/bundle.spec.js > dist/test/bundle.spec.espowered.js",
-    "espower:ts" : "mocha --compilers ts:espower-typescript/guess",
+    "build:test": "tsc -p test && webpack -d",
+    "clean": "rm -rf dist",
+    "espower": "espower -s dist/test/bundle.spec.js.map dist/test/bundle.spec.js > dist/test/bundle.spec.espowered.js",
+    "espower:ts": "mocha --compilers ts:espower-typescript/guess",
     "postbuild:test": "npm run espower",
     "postinstall": "typings install",
     "prebuild:lib": "npm run tsconfig:lib",
